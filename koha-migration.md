@@ -51,19 +51,20 @@ EXIT;
 ```sh
 ssh server_to_restore_ip
 cd /var/spool/koha/instance_name/
-sudo chmod 0777 instance_name-2025-05-14.sql.gz
+sudo chmod 0777 instance_name.sql.gz
+sudo chmod 0777 instance_name.tar.gz
 exit
 ```
 
 ### **Copy Backup Files**
 ```sh
-scp koha@server_to_restore_ip:/var/spool/koha/instance_name/instance_name-2025-05-14.sql.gz .
-scp koha@server_to_restore_ip:/var/spool/koha/instance_name/instance_name-2025-05-14.tar.gz .
+scp koha@server_to_restore_ip:/var/spool/koha/instance_name/instance_name.sql.gz .
+scp koha@server_to_restore_ip:/var/spool/koha/instance_name/instance_name.tar.gz .
 ```
 
 ### **Restore Koha**
 ```sh
-sudo koha-restore instance_name-2025-05-14.sql.gz instance_name-2025-05-14.tar.gz
+sudo koha-restore instance_name.sql.gz instance_name.tar.gz
 ```
 
 ## **3. Configure Apache**
@@ -100,7 +101,3 @@ sudo systemctl restart apache2
 ```
 
 ---
-
-### **Publishing on GitHub**
-1. Save your file as **`koha-migration.md`**.
-2. Upload it to your GitHub repository.
