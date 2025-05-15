@@ -87,8 +87,8 @@ Listen <staff interface port number>
 sudo systemctl restart apache2
 ```
 
-## **4. Final Steps**
-### **Reindex Koha**
+## **4. Reindex Koha**
+
 ```sh
 sudo koha-rebuild-zebra -f instance_name
 ```
@@ -101,3 +101,25 @@ sudo systemctl restart apache2
 ```
 
 ---
+
+### **5. Set Up the Package Sources to 23.11**
+```sh
+echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 23.11 main' | sudo tee /etc/apt/sources.list.d/koha.list
+sudo apt update
+sudo apt upgrade
+```
+
+
+
+### **6. Set Up the Package Sources 24.11**
+```sh
+echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 24.11 main' | sudo tee /etc/apt/sources.list.d/koha.list
+sudo apt update
+sudo apt upgrade
+```
+
+## **7. Final step - Reindex Koha**
+
+```sh
+sudo koha-rebuild-zebra -f instance_name
+```
